@@ -22,14 +22,25 @@ t= np.random.normal(0.1+2*x+x**2+3*x**3,1)
 lik_model = minimize(lik, np.array([1.0,1.0,1.0,1.0,1.0,1.0,1.0])\
 	, method='Powell')
 w = lik_model['x'][:-1].reshape((6,1))
-print w
 
-plt.scatter(x,t)
-x = np.array([random.uniform(-100,100) for i in range(100)])
+fig= plt.figure() 
+ax = fig.add_subplot(111)
+ax.scatter(x,t,label='t')
+x = np.array([random.uniform(-100,100) for i in range(10000)])
 x.sort()
 _x=np.array([x**0,x,x**2,x**3,x**4,x**5])
 y=sum(w*_x)
+ax.plot(x,y,label='y')
+ax.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3,
+           ncol=2, mode="expand", borderaxespad=0.)
+strGraph=""
+for i in range(len(w)):
+	strGraph+="w"+str(i)+": %.10f\n" % w[i][0]
+strGraph+='beta: %.10f' % lik_model['x'][-1]
+ax.text(0.95, 0.01, strGraph,
+        verticalalignment='bottom', horizontalalignment='right',
+        transform=ax.transAxes,
+        color='blue', fontsize=15)
 
-plt.plot(x,y)
 plt.show()
 
