@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 import matplotlib.mlab as mlab
 import random 
 s=900
-data=10
-alpha=0.00000001
+data=100
+alpha=100
 def lik(p):
     if len(p)==1:
     	p=p[0]
