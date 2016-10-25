@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import matplotlib.mlab as mlab
 import random 
 s=900
-alpha=1
+alpha=100000000000000000000
 beta=1.0
 BayesS_1=None
 plotSize=100
@@ -51,6 +51,4 @@ for i in range(4):
     ax[i].fill_between(px, y+var, y-var, alpha=.5)
     ax[i].axes.get_yaxis().set_visible(False)
 
-    
-    
 plt.show()
